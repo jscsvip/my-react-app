@@ -7,10 +7,8 @@ import 'antd/dist/reset.css'
 import zhCN from 'antd/locale/zh_CN';
 
 createRoot(document.getElementById('root')).render(
-  <Router>
     <ConfigProvider locale={zhCN} theme={{ token: { colorPrimary: '#00b96b' } }}>
       <App />
     </ConfigProvider>
-  </Router>
 
 )
