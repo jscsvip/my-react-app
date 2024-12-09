@@ -1,3 +1,10 @@
 .MyLayout{
   height: 100vh;
 }
+.demo-logo-vertical img{
+  width: 50%;
+  height: 50%;
+  border-radius: 15px;
+  margin: 16px auto;
+  display: block;
+}

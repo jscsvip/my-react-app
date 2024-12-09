@@ -7,6 +7,7 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
+import logo from '../assets/logo.png'
 const { Header, Sider, Content } = Layout;
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -16,7 +17,9 @@ const App = () => {
   return (
     <Layout className='MyLayout'>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical" >
+        <img src={logo} />
+        </div>
         <Menu
           theme="dark"
           mode="inline"
@@ -25,17 +28,47 @@ const App = () => {
             {
               key: '1',
               icon: <UserOutlined />,
-              label: 'nav 1',
+              label: '学生管理',
+              children: [
+                {
+                  key: '1-1',
+                  label: '学生信息',
+                },
+                {
+                  key: '1-2',
+                  label: '学生成绩',
+                }
+              ]
             },
             {
               key: '2',
               icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              label: '班级管理',
+              children: [
+                {
+                  key: '2-1',
+                  label: '班级信息',
+                },
+                {
+                  key: '2-2',
+                  label: '班级学生',
+                }
+              ]
             },
             {
               key: '3',
               icon: <UploadOutlined />,
-              label: 'nav 3',
+              label: '课程管理',
+              children: [
+                {
+                  key: '3-1',
+                  label: '课程信息',
+                },
+                {
+                  key: '3-2',
+                  label: '授课老师',
+                }
+              ]
             },
           ]}
         />
