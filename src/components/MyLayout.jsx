@@ -24,52 +24,43 @@ const App = ({children}) => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['/admin/student_type']}
+          defaultOpenKeys={['/admin/student_menu']}
           items={[
             {
-              key: '1',
+              key: '/admin/student_menu',
               icon: <UserOutlined />,
               label: '学生管理',
               children: [
                 {
-                  key: '1-1',
-                  label: '学生信息',
+                  key: '/admin/student_type',
+                  label: '学生分类',
                 },
                 {
-                  key: '1-2',
-                  label: '学生成绩',
+                  key: '/admin/student_list',
+                  label: '学生列表',
                 }
               ]
             },
             {
-              key: '2',
+              key: '/admin/class_menu',
               icon: <ReadOutlined />,
               label: '班级管理',
               children: [
                 {
-                  key: '2-1',
-                  label: '班级信息',
+                  key: '/admin/class_type',
+                  label: '班级分类',
                 },
                 {
-                  key: '2-2',
-                  label: '班级学生',
+                  key: '/admin/class_list',
+                  label: '班级列表',
                 }
               ]
             },
             {
-              key: '3',
+              key: '/admin/course_menu',
               icon: <UploadOutlined />,
-              label: '课程管理',
-              children: [
-                {
-                  key: '3-1',
-                  label: '课程信息',
-                },
-                {
-                  key: '3-2',
-                  label: '授课老师',
-                }
-              ]
+              label: '课程管理'
             },
           ]}
         />
