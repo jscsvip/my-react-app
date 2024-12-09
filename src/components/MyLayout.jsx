@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { Outlet,useLocation   } from "react-router-dom"
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   ReadOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import logo from '../assets/logo.png'
-const { Header, Sider, Content } = Layout;
+const {  Sider, Content } = Layout;
 import { useNavigate } from "react-router-dom"
-
+import Header from './layout/MyHeader';
 const App = ({children}) => {
   const navigate = useNavigate()
   // 获取当前的路由
@@ -22,6 +19,9 @@ const App = ({children}) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const onCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
   return (
     <Layout className='MyLayout'>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -74,23 +74,7 @@ const App = ({children}) => {
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+       <Header colorBgContainer={colorBgContainer} collapsed={collapsed} onCollapsed={onCollapsed}></Header>
         <Content
           style={{
             margin: '24px 16px',
