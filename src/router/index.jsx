@@ -6,10 +6,15 @@ import CourseMenu from "../pages/CourseMenu";
 import StudentList from "../pages/StudentList";
 import StudentType from "../pages/StudentType"; 
 import MyLayout from "../components/MyLayout";
+import Login from "../pages/Login";
 const router = createBrowserRouter([
       {
         path:'/',
         element: <Navigate to="/admin/student_type"  />, //重定向
+    },
+    {
+      path:'/login',
+      element: <Login />, //重定向
     },
     {
       path:'/admin',
