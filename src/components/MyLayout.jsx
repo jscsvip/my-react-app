@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet,useLocation   } from "react-router-dom"
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -10,7 +11,13 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import logo from '../assets/logo.png'
 const { Header, Sider, Content } = Layout;
+import { useNavigate } from "react-router-dom"
+
 const App = ({children}) => {
+  const navigate = useNavigate()
+  // 获取当前的路由
+  const location = useLocation()
+  console.log(location.pathname)
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -24,8 +31,9 @@ const App = ({children}) => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['/admin/student_type']}
-          defaultOpenKeys={['/admin/student_menu']}
+          onClick={({ key, keyPath})=>{ console.log( key, keyPath); navigate(key) } }
+          defaultSelectedKeys={[location.pathname]}
+          defaultOpenKeys={[location.pathname.replace(/_.*/, '_menu')]}
           items={[
             {
               key: '/admin/student_menu',
@@ -92,7 +100,8 @@ const App = ({children}) => {
             borderRadius: borderRadiusLG,
           }}
         >
-          {children}
+        {/* 子路由嵌套 */}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
