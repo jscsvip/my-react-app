@@ -8,3 +8,8 @@
   margin: 16px auto;
   display: block;
 }
+
+.login-container{
+  height: 100vh;
+  background:  no-repeat url('./assets/login-bg.jpg') 100% 100%;
+}
