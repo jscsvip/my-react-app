@@ -1,10 +1,11 @@
-import { Row,Col,Card,Button, Checkbox, Form, Input  } from 'antd';
+import { Row,Col,Card,Button, Checkbox, Form, Input, message  } from 'antd';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 export default function Login() {
   const navigate = useNavigate();
   const onFinish = (values) => {
     console.log('Success:', values);
+    message.success("登录成功")
     navigate('/admin/student_type')
   };
   const onFinishFailed = (errorInfo) => {
