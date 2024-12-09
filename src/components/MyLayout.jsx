@@ -5,6 +5,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  ReadOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import logo from '../assets/logo.png'
@@ -42,7 +43,7 @@ const App = ({children}) => {
             },
             {
               key: '2',
-              icon: <VideoCameraOutlined />,
+              icon: <ReadOutlined />,
               label: '班级管理',
               children: [
                 {
