@@ -9,7 +9,7 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import logo from '../assets/logo.png'
 const { Header, Sider, Content } = Layout;
-const App = () => {
+const App = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -100,7 +100,7 @@ const App = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          {children}
         </Content>
       </Layout>
     </Layout>
