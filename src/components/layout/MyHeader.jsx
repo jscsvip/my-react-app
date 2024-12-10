@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Layout,Dropdown,message } from 'antd';
+import { Button, Layout,Dropdown,App } from 'antd';
 import userImg from '@/assets/react.svg';
 import { useNavigate  } from 'react-router-dom';
 import {
@@ -27,6 +27,7 @@ const items = [
 ]
 export default function MyHeader({colorBgContainer,collapsed,onCollapsed}) {
   const navigate = useNavigate();
+  const { message } = App.useApp();
   const handleUserMenuSelect = ({key, label}) => {
     console.log('click', key);
     if(key === 'logout'){
