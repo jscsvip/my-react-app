@@ -1,7 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+import {get} from '@/utils/request'
+
 export default function StudentList() {
-  axios.get('/api/getData').then(({data})=>{
+  get('/getData').then(({data})=>{
     console.log(data)
   })
   return (
