@@ -44,7 +44,11 @@ export default function StudentType() {
   };
   const handleOk = () => {
     setIsModalOpen(false);
-    message.success('添加成功');
+    formEdit.submit()
+    // submit成功后调用Form组件定义的onFinish方法
+    // 不要这样，直接调用formEdit.resetFields() 会导致onFinish方法获取不到表单值
+    // formEdit.resetFields()
+
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -75,6 +79,7 @@ export default function StudentType() {
         {/* { form.getFieldValue("name")} */}
         {nameValue && <div>Name: {nameValue}</div>}
         {classValue && <div>Class: {classValue}</div>}
+        {/* 行内搜索表单 */}
         <Form
           layout={'inline'}
           form={form}
@@ -87,15 +92,45 @@ export default function StudentType() {
             <Input placeholder="请输入学生分类" />
           </Form.Item>
         </Form>
+        {/* 学生表格 */}
           <Table dataSource={dataSource} columns={columns} >
 
           </Table>
         </div>
       </Card>
+
+      {/* 编辑模态框 */}
       <Modal title="编辑" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+          <Form
+             labelCol={{
+                span: 4,
+              }}
+              wrapperCol={{
+                span: 20,
+              }}
+              form={formEdit}
+              onFinish={(values)=>{
+                message.success(values.name+'添加成功');
+                console.log(values)
+                formEdit.resetFields()
+              }}
+              style={{paddingBottom: '20px'}}
+            >
+            <Form.Item 
+              label="学生姓名" 
+              name="name"  
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your username!',
+                },
+              ]}>
+                <Input placeholder="请输入学生姓名" />
+              </Form.Item>
+              <Form.Item label="简介" name="desc">
+                <Input.TextArea placeholder="请输入学生介绍" />
+              </Form.Item>
+            </Form>
       </Modal>
     </div>
   );
