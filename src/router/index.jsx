@@ -7,10 +7,11 @@ import StudentList from "../pages/StudentList";
 import StudentType from "../pages/StudentType"; 
 import MyLayout from "../components/MyLayout";
 import Login from "../pages/Login";
+import Index from "../pages/Index";
 const router = createBrowserRouter([
       {
         path:'/',
-        element: <Navigate to="/admin/student_type"  />, //重定向
+        element: <Navigate to="/admin"  />, //重定向
     },
     {
       path:'/login',
@@ -21,11 +22,15 @@ const router = createBrowserRouter([
       element: <MyLayout />,
       children:[
         {
-          path:'/admin/class_list',
+          path:'/admin/',
+          element: <Index />,
+        },
+        {
+          path:'/admin/class_menu/class_list',
           element: <ClassList />,
         },
         {
-            path:'/admin/class_type',
+            path:'/admin/class_menu/class_type',
             element: <ClassType />,
         },
         {
@@ -33,13 +38,13 @@ const router = createBrowserRouter([
             element: <CourseMenu />,
         },
         {
-          path:'/admin/student_list',
+          path:'/admin/student_menu/student_list',
           element: <StudentList />,
-      },
-      {
-          path:'/admin/student_type',
-          element: <StudentType />,
-      }
+        },
+        {
+            path:'/admin/student_menu/student_type',
+            element: <StudentType />,
+        }
       ]
     },
    

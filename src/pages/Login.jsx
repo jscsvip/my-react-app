@@ -8,7 +8,7 @@ export default function Login() {
     console.log('Success:', values);
     
     message.success("登录成功")
-    navigate('/admin/student_type')
+    navigate('/admin')
   };
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
