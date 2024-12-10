@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Card, Button, Form, Input, Table, Modal, App  } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 const dataSource = [
@@ -36,6 +36,7 @@ const columns = [
 
 export default function StudentType() {
   const [form] = Form.useForm();
+  const [formEdit] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { message } = App.useApp();
   const showModal = () => {
@@ -48,6 +49,18 @@ export default function StudentType() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  // useEffect(()=>{
+    // 初始化赋值
+  //   // form.setFieldsValue({
+  //   //   name: '王小明',
+  //   //   class: '高一(1)班'
+  //   // })
+  //   console.log(form.getFieldValue())
+  // },[])
+  // 监听表单值变化
+  const nameValue = Form.useWatch('name', form);
+  const classValue = Form.useWatch('class', form);
+
   return (
     <div>
       <Card
@@ -59,15 +72,18 @@ export default function StudentType() {
         }
       >
         <div>
+        {/* { form.getFieldValue("name")} */}
+        {nameValue && <div>Name: {nameValue}</div>}
+        {classValue && <div>Class: {classValue}</div>}
         <Form
           layout={'inline'}
           form={form}
           style={{paddingBottom: '20px'}}
         >
-         <Form.Item label="学生姓名">
+         <Form.Item label="学生姓名" name="name">
             <Input placeholder="请输入学生姓名" />
           </Form.Item>
-          <Form.Item label="学生分类">
+          <Form.Item label="学生分类" name="class">
             <Input placeholder="请输入学生分类" />
           </Form.Item>
         </Form>
