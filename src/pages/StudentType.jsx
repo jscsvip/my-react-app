@@ -44,7 +44,7 @@ export default function StudentType() {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-    setIsModalOpen(false);
+    // setIsModalOpen(false);
     formEdit.submit()
     // submit成功后调用Form组件定义的onFinish方法
     // 不要这样，直接调用formEdit.resetFields() 会导致onFinish方法获取不到表单值
@@ -53,6 +53,7 @@ export default function StudentType() {
   };
   const handleCancel = () => {
     setIsModalOpen(false);
+    formEdit.resetFields()
   };
   // useEffect(()=>{
     // 初始化赋值
@@ -101,7 +102,7 @@ export default function StudentType() {
       </Card>
 
       {/* 编辑模态框 */}
-      <Modal title="编辑" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="编辑" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} destroyOnClose={true}>
           <Form
              labelCol={{
                 span: 4,
@@ -114,6 +115,7 @@ export default function StudentType() {
                 message.success(values.name+'添加成功');
                 console.log(values)
                 formEdit.resetFields()
+                handleCancel()
               }}
               style={{paddingBottom: '20px'}}
             >
@@ -129,6 +131,7 @@ export default function StudentType() {
                 <Input placeholder="请输入学生姓名" />
               </Form.Item>
                 <Form.Item label="上传照片">
+                {/* {isModalOpen?<MyUpload></MyUpload>:null}   关闭弹窗无法销毁改组件 */}
                 <MyUpload></MyUpload>
               </Form.Item>
               <Form.Item label="简介" name="desc">
