@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { Card, Button, Form, Input, Table, Modal, App  } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import MyUpload from '@/components/MyUpload';
 const dataSource = [
   {
     key: '1',
@@ -126,6 +127,9 @@ export default function StudentType() {
                 },
               ]}>
                 <Input placeholder="请输入学生姓名" />
+              </Form.Item>
+                <Form.Item label="上传照片">
+                <MyUpload></MyUpload>
               </Form.Item>
               <Form.Item label="简介" name="desc">
                 <Input.TextArea placeholder="请输入学生介绍" />
