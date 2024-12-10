@@ -3,7 +3,8 @@ import { Outlet,useLocation   } from "react-router-dom"
 import {
   UploadOutlined,
   UserOutlined,
-  ReadOutlined
+  ReadOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme, Breadcrumb  } from 'antd';
 import logo from '../assets/logo.png'
@@ -14,7 +15,7 @@ import Header from './layout/MyHeader';
 const menuItemsArr = [
   {
     key: '/admin',
-    icon: <UserOutlined />,
+    icon: <HomeOutlined />,
     label: '首页'
   },
   {
